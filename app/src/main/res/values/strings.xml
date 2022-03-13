@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">AndroidLesson3</string>
+    <string name="to_pay">К оплате за %s: %.2f ₽</string>
+
+    <string name="adjust">Пополнить</string>
+    <string name="money_string">%.2f ₽</string>
+    <string name="cabinet_title">Личный кабинет</string>
+    <string name="balance_title">Ваш баланс</string>
+
+    <string name="personal_number">ЛС:</string>
+    <string name="tariff_title">Тариф</string>
+    <string name="tariff_name">Тариф «%s»</string>
+
+    <string name="money_string_int">%d ₽</string>
+    <string name="month">/мес</string>
+    <string name="user_title">Пользователь</string>
+    <string name="services_list">Доступные услуги</string>
+</resources>
