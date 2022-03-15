@@ -18,16 +18,16 @@ class TariffAdapter : ListAdapter<Tariff, TariffAdapter.ViewHolder>(ItemDiffCall
         private val tariffName: TextView = view.findViewById(R.id.tariff_name)
         private val tariffPrice: TextView = view.findViewById(R.id.tariff_price)
         private val tariffDescription: TextView = view.findViewById(R.id.tariff_description)
-        private val divider: View = view.findViewById(R.id.divider)
-        private val context: Context = view.context
+        private val underline: View = view.findViewById(R.id.divider)
+        private val tariffContext: Context = view.context
 
         fun bind(tariff: Tariff, isLastItem: Boolean) {
-            tariffName.text = context.getString(R.string.tariff_name, tariff.name)
-            tariffPrice.text = context.getString(R.string.money_string_int, tariff.amount.toInt())
+            tariffName.text = tariffContext.getString(R.string.tariff_name, tariff.name)
+            tariffPrice.text = tariffContext.getString(R.string.money_string_int, tariff.amount.toInt())
             tariffDescription.text = tariff.description
 
             if (isLastItem){
-                divider.visibility = View.GONE
+                underline.visibility = View.GONE
             }
         }
     }

@@ -1,12 +1,10 @@
 package com.example.androidlesson3.cabinet
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -18,15 +16,14 @@ class UserButtonAdapter : ListAdapter<UserButton, UserButtonAdapter.ViewHolder>(
 
         private val userIcon: ImageView = view.findViewById(R.id.user_icon)
         private val userText: TextView = view.findViewById(R.id.user_text)
-        private val divider: View = view.findViewById(R.id.divider)
-        private val context: Context = view.context
+        private val underline: View = view.findViewById(R.id.divider)
 
         fun bind(userButton: UserButton, isLastItem: Boolean) {
             userIcon.setImageResource(userButton.icon)
             userText.text = userButton.text
 
             if (isLastItem){
-                divider.visibility = View.GONE
+                underline.visibility = View.GONE
             }
         }
     }
