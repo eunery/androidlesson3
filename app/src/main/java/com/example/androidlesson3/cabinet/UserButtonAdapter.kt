@@ -47,3 +47,4 @@ class UserButtonDiffCallback : DiffUtil.ItemCallback<UserButton>() {
     override fun areItemsTheSame(oldItem: UserButton, newItem: UserButton): Boolean = oldItem.id == newItem.id
     override fun areContentsTheSame(oldItem: UserButton, newItem: UserButton): Boolean = oldItem == newItem
 }
+

@@ -37,15 +37,17 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val userData = UserData()
 
-        view.findViewById<TextView>(R.id.personal_number).text = userData.balanceData.id.toString();
-        view.findViewById<TextView>(R.id.balance).text = getString(R.string.money_string, userData.balanceData.amount)
-        view.findViewById<TextView>(R.id.to_pay).text = getString(R.string.to_pay, "сентябрь", userData.balanceData.toPay)
+        view.findViewById<TextView>(R.id.personal_number).text = "372534652";
+        view.findViewById<TextView>(R.id.balance).text = getString(R.string.money_string, 625.0)
+        view.findViewById<TextView>(R.id.to_pay).text = getString(R.string.to_pay, "сентябрь", 0.0)
 
         val recyclerViewTariff = view.findViewById<RecyclerView>(R.id.tariff_list)
         val tariffAdapter = TariffAdapter()
-        tariffAdapter.submitList(userData.tariffs)
+        tariffAdapter.submitList(mutableListOf(
+            Tariff(id = 1, name = "Жаба (бесплатный тариф)", description = "Скорость до 15! Мбит/c", amount = 0.0),
+            Tariff(id = 2, name = "Сосиска", description = "Скорость до 0.0001 Мбит/c", amount = 001.0)
+        ))
         recyclerViewTariff.adapter = tariffAdapter
 
         val recyclerViewButtons = view.findViewById<RecyclerView>(R.id.buttons_list)
@@ -54,12 +56,12 @@ class MainFragment : Fragment() {
             UserButton(
                 id = 1,
                 icon = R.drawable.ic_user,
-                text = userData.user.names
+                text = "Путин Владимир Владимирович"
             ),
             UserButton(
                 id = 2,
                 icon = R.drawable.ic_home,
-                text = userData.user.address
+                text = "Кремль, да?"
             ),
             UserButton(
                 id = 3,
