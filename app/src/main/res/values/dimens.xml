@@ -6,6 +6,7 @@
     <dimen name="card_data_size">15sp</dimen>
     <dimen name="margin">15dp</dimen>
     <dimen name="title_padding">21dp</dimen>
+    <dimen name="title_margin_top">21dp</dimen>
     <dimen name="corner_radius">15dp</dimen>
 
     <dimen name="elevation">33dp</dimen>

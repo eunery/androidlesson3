@@ -15,12 +15,22 @@
         android:clipToPadding="false">
 
         <TextView
+            android:id="@+id/loading"
+            android:text="Загрузка данных с API"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="invisible"
+            />
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cabinet_title"
             android:textColor="@color/primary"
             android:textSize="@dimen/title_size"
             android:textStyle="bold"
+            android:layout_marginTop="@dimen/title_margin_top"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:paddingBottom="@dimen/title_padding"

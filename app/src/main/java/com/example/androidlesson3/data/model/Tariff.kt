@@ -1,4 +1,4 @@
-package com.example.androidlesson3.cabinet
+package com.example.androidlesson3.data.model
 
 data class Tariff(
     val id: Int,
