@@ -9,12 +9,12 @@ import retrofit2.Call
 interface IApi
 {
     @GET("user")
-    fun getUserInfo():Call<List<User>>
+    suspend fun getUserInfo(): List<User>
 
     @GET("tariff")
-    fun getTariffInfo():Call<List<Tariff>>
+    suspend fun getTariffInfo():List<Tariff>
 
     @GET("balance")
-    fun getBalanceInfo():Call<List<Balance>>
+    suspend fun getBalanceInfo():List<Balance>
 
 }
