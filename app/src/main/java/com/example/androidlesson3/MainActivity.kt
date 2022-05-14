@@ -2,7 +2,7 @@ package com.example.androidlesson3
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.androidlesson3.cabinet.MainFragment
+import com.example.androidlesson3.ui.MainFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

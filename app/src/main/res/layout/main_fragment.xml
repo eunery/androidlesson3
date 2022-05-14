@@ -5,7 +5,7 @@
     android:id="@+id/mainScroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cabinet.MainFragment">
+    tools:context=".ui.MainFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainHost"
