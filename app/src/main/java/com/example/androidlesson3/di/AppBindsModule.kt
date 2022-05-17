@@ -36,8 +36,6 @@ abstract class AppBindsModule {
     abstract fun bindNewEventViewModel(newEventViewModel: MainViewModel): ViewModel
 
     @Binds abstract fun bindUserRepo(userRepository: UserRepository): IUserRepository
-
-
     @Binds abstract fun bindTariffRepo(tariffRepository: TariffRepository): ITariffRepository
     @Binds abstract fun bindBalanceRepo(balanceRepository: BalanceRepository): IBalanceRepository
 
