@@ -9,7 +9,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
-import com.example.androidlesson3.App
 import com.example.androidlesson3.R
 import com.example.domain.model.Balance
 import com.example.domain.model.Tariff
@@ -17,16 +16,11 @@ import com.example.domain.model.User
 import com.example.androidlesson3.databinding.MainFragmentBinding
 import com.example.androidlesson3.findAppComponent
 import com.example.androidlesson3.viewmodels.MainViewModel
-import com.example.androidlesson3.viewmodels.ViewModelFactory
-import javax.inject.Inject
 
 
 class MainFragment : Fragment() {
     private lateinit var binding: MainFragmentBinding
     private lateinit var viewLink: View
-
-    private var progressCounter = 0
-    private lateinit var bar: TextView
 
     private val viewModel by viewModels<MainViewModel> {
         requireContext().findAppComponent().viewModelFactory()
@@ -48,22 +42,23 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setData(view)
+    }
+
+
+    private fun setData(view: View){
         viewLink = view
-        bar = binding.loading
+        viewModel.isLoading.observe(viewLifecycleOwner){
+            binding.loading.isVisible = it
+        }
         viewModel.userInfo.observe(viewLifecycleOwner) {
             setUsers(it)
-            progressCounter++
-            isQueryFinished()
         }
         viewModel.balance.observe(viewLifecycleOwner) {
             setBalance(it)
-            progressCounter++
-            isQueryFinished()
         }
         viewModel.tariffs.observe(viewLifecycleOwner) {
             setTariffs(it)
-            progressCounter++
-            isQueryFinished()
         }
     }
 
@@ -97,28 +92,29 @@ class MainFragment : Fragment() {
                     UserButton(
                         id = 3,
                         icon = R.drawable.ic_menu,
-                        text = getString(R.string.services_list)
-                    )
+                        text = getString(R.string.services_list),
+                    ),
                 )
             )
             recyclerViewButtons.adapter = adapter
         }
     }
+    private fun mapTariffToItem(tariff: Tariff) =
+        ListItemTariff(
+            id = tariff.id,
+            name = tariff.name,
+            description = tariff.description,
+            amount = tariff.amount,
+            onClick = { viewModel.delete(tariff) },
+        )
 
     private fun setTariffs(tariffsList: List<Tariff>) {
         activity?.runOnUiThread {
             val recyclerViewTariff = viewLink.findViewById<RecyclerView>(R.id.tariff_list)
             val tariffAdapter = TariffAdapter()
-            tariffAdapter.submitList(tariffsList)
+            tariffAdapter.submitList(tariffsList.map { Tariff -> mapTariffToItem(Tariff) })
             recyclerViewTariff.adapter = tariffAdapter
         }
-    }
-
-    private fun isQueryFinished(){
-        activity?.runOnUiThread{
-            bar.isVisible = progressCounter != 3
-        }
-
     }
 
     companion object {

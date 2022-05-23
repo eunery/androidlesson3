@@ -18,7 +18,7 @@
     <dimen name="balance_icon_size">40dp</dimen>
     <dimen name="mini_title_padding_t">17dp</dimen>
     <dimen name="mini_title_padding_b">15dp</dimen>
-    <dimen name="width_to_ellipsize">222dp</dimen>
+    <dimen name="width_to_ellipsize">220dp</dimen>
     <dimen name="price_size">25sp</dimen>
 
     <dimen name="icon_margin">9dp</dimen>

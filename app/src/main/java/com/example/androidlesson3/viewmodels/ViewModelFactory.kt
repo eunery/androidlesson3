@@ -2,9 +2,6 @@ package com.example.androidlesson3.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.domain.usecases.getBalance.IGetBalanceUseCase
-import com.example.domain.usecases.getTariffs.IGetTariffsUseCase
-import com.example.domain.usecases.getUser.IGetUserUseCase
 import javax.inject.Inject
 import javax.inject.Provider
 

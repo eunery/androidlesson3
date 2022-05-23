@@ -14,15 +14,20 @@
         android:padding="@dimen/main_padding"
         android:clipToPadding="false">
 
-        <TextView
+        <ProgressBar
             android:id="@+id/loading"
-            android:text="Загрузка данных с API"
+            android:text="Загрузка данных"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:elevation="60dp"
+            android:indeterminateTint="@color/black"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="visible"
             />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

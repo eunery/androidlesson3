@@ -4,15 +4,15 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidlesson3.R
-import com.example.domain.model.Tariff
 
 
-class TariffAdapter : ListAdapter<Tariff, TariffAdapter.ViewHolder>(ItemDiffCallback()) {
+class TariffAdapter : ListAdapter<ListItemTariff, TariffAdapter.ViewHolder>(ItemDiffCallback()) {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -20,13 +20,16 @@ class TariffAdapter : ListAdapter<Tariff, TariffAdapter.ViewHolder>(ItemDiffCall
         private val tariffPrice: TextView = view.findViewById(R.id.tariff_price)
         private val tariffDescription: TextView = view.findViewById(R.id.tariff_description)
         private val underline: View = view.findViewById(R.id.divider)
+        private val buttonDeleteTariff: Button = view.findViewById(R.id.delete_tariff)
         private val tariffContext: Context = view.context
 
-        fun bind(tariff: Tariff, isLastItem: Boolean) {
+        fun bind(tariff: ListItemTariff, isLastItem: Boolean) {
             tariffName.text = tariffContext.getString(R.string.tariff_name, tariff.name)
             tariffPrice.text = tariffContext.getString(R.string.money_string_int, tariff.amount.toInt())
             tariffDescription.text = tariff.description
-
+            buttonDeleteTariff.setOnClickListener {
+                tariff.onClick()
+            }
             if (isLastItem){
                 underline.visibility = View.GONE
             }
@@ -44,7 +47,7 @@ class TariffAdapter : ListAdapter<Tariff, TariffAdapter.ViewHolder>(ItemDiffCall
     }
 }
 
-class ItemDiffCallback : DiffUtil.ItemCallback<Tariff>() {
-    override fun areItemsTheSame(oldItem: Tariff, newItem: Tariff): Boolean = oldItem.id == newItem.id
-    override fun areContentsTheSame(oldItem: Tariff, newItem: Tariff): Boolean = oldItem == newItem
+class ItemDiffCallback : DiffUtil.ItemCallback<ListItemTariff>() {
+    override fun areItemsTheSame(oldItem: ListItemTariff, newItem: ListItemTariff): Boolean = oldItem.id == newItem.id
+    override fun areContentsTheSame(oldItem: ListItemTariff, newItem: ListItemTariff): Boolean = oldItem == newItem
 }
