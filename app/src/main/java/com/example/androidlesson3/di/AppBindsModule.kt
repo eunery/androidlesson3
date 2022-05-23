@@ -23,6 +23,7 @@ import com.example.domain.usecases.getUser.IGetUserUseCase
 import com.example.network.retrofit.ApiProvider
 import com.example.network.retrofit.IApi
 import com.example.data.Database
+import com.example.data.migrations.Migration_1_2
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -58,7 +59,7 @@ class AppModule(private val context: Context) {
     @Provides
     fun provideDatabase(context: Context) =
         Room.databaseBuilder(context, Database::class.java, "db")
-            .build()
+            .addMigrations(Migration_1_2).build()
 
     @Provides fun provideBalanceDao(database: Database) = database.getBalanceDao()
     @Provides fun provideTariffDao(database: Database) = database.getTariffDao()
